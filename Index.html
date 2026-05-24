@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Dịch Vụ Website & Marketing Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08090d;
+    --bg2: #0e1018;
+    --bg3: #13151f;
+    --gold: #c9a96e;
+    --gold2: #e8c98a;
+    --blue: #4f8ef7;
+    --blue2: #7ab3ff;
+    --text: #e8e4da;
+    --muted: #8a8a9a;
+    --border: rgba(201,169,110,0.18);
+    --card: rgba(255,255,255,0.03);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 6vw;
+    background: rgba(8,9,13,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .logo span { color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.55rem 1.5rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--bg); }
+  .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .menu-toggle span { display: block; width: 24px; height: 1.5px; background: var(--text); transition: all 0.3s; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 10rem 6vw 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 70% 40%, rgba(79,142,247,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(201,169,110,0.06) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(rgba(201,169,110,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,169,110,0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; max-width: 820px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    color: var(--gold); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 1.8rem;
+  }
+  .hero-tag::before {
+    content: ''; display: block; width: 28px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 700;
+    line-height: 1.08;
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  .hero-btns { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--bg);
+    border: none;
+    padding: 1rem 2.4rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,169,110,0.3); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 1rem 2.4rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+  .hero-stats {
+    margin-top: 5rem;
+    display: flex; gap: 3.5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.12em; }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--muted); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+  .hero-scroll::after {
+    content: ''; display: block; width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  @keyframes scrollBounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+  /* SECTION COMMON */
+  section { padding: 7rem 6vw; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    color: var(--gold); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .section-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { font-style: normal; color: var(--gold); }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 520px; line-height: 1.8; }
+
+  /* ABOUT */
+  .about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    margin-top: 4rem;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img-frame {
+    width: 100%; padding-bottom: 115%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-img-frame::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(79,142,247,0.15), transparent 60%),
+      radial-gradient(ellipse at 70% 70%, rgba(201,169,110,0.1), transparent 60%);
+  }
+  .about-initials {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.3;
+    letter-spacing: 0.1em;
+  }
+  .about-deco {
+    position: absolute; bottom: -20px; right: -20px;
+    width: 120px; height: 120px;
+    border: 1px solid var(--border);
+  }
+  .about-deco::before {
+    content: ''; position: absolute; inset: 10px;
+    border: 1px solid rgba(201,169,110,0.3);
+  }
+  .about-text p { color: var(--muted); margin-bottom: 1.2rem; line-height: 1.8; }
+  .about-text p strong { color: var(--text); font-weight: 600; }
+  .skills-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .skill-item {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.88rem; color: var(--muted);
+  }
+  .skill-item::before { content: '✦'; color: var(--gold); font-size: 0.55rem; }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px;
+    margin-top: 4rem;
+    border: 1.5px solid var(--border);
+  }
+  .service-card {
+    background: var(--bg2);
+    padding: 2.8rem 2.4rem;
+    border-right: 1.5px solid var(--border);
+    border-bottom: 1.5px solid var(--border);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--blue));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .service-card:hover { background: var(--bg3); transform: translateY(-4px); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .service-num {
+    position: absolute; top: 1.5rem; right: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: rgba(201,169,110,0.08);
+    line-height: 1;
+    transition: color 0.4s;
+  }
+  .service-card:hover .service-num { color: rgba(201,169,110,0.15); }
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--text);
+  }
+  .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.75; margin-bottom: 1.5rem; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.25rem 0.75rem;
+    transition: all 0.3s;
+  }
+  .service-card:hover .tag { border-color: rgba(201,169,110,0.35); color: var(--gold); }
+
+  /* PROJECTS */
+  .projects { background: var(--bg2); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .project-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: all 0.4s;
+    position: relative;
+  }
+  .project-card:hover { transform: translateY(-6px); border-color: rgba(201,169,110,0.4); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+  .project-thumb {
+    height: 200px;
+    background: var(--bg);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .project-thumb-inner {
+    width: 80%; height: 75%;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .pt-1 { background: radial-gradient(ellipse at 30% 40%, rgba(79,142,247,0.12), transparent); }
+  .pt-2 { background: radial-gradient(ellipse at 70% 40%, rgba(201,169,110,0.1), transparent); }
+  .pt-3 { background: radial-gradient(ellipse at 50% 60%, rgba(100,200,130,0.1), transparent); }
+  .project-info { padding: 1.8rem; }
+  .project-cat { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  .project-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .project-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    color: var(--gold); font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 1.2rem;
+    transition: gap 0.3s;
+  }
+  .project-link:hover { gap: 0.9rem; }
+  .project-link::after { content: '→'; }
+
+  /* PROCESS */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    margin-top: 4rem;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 2.2rem; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border) 15%, var(--border) 85%, transparent);
+  }
+  .step {
+    padding: 0 2rem 2rem;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .step:last-child { border-right: none; }
+  .step-num {
+    width: 44px; height: 44px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.8rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    position: relative; z-index: 1;
+    transition: all 0.4s;
+  }
+  .step:hover .step-num { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+  .step h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .step p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--bg2); }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .testi-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 2.4rem;
+    transition: all 0.4s;
+    position: relative;
+  }
+  .testi-card:hover { border-color: rgba(201,169,110,0.35); }
+  .testi-card::before {
+    content: '"';
+    position: absolute; top: 1.2rem; right: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: rgba(201,169,110,0.15);
+    line-height: 1;
+  }
+  .testi-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1.2rem; letter-spacing: 0.2em; }
+  .testi-text { font-size: 0.92rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.8rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 0.9rem; }
+  .testi-avatar {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--gold), var(--blue));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 700; color: var(--bg);
+  }
+  .testi-name { font-size: 0.88rem; font-weight: 600; }
+  .testi-role { font-size: 0.75rem; color: var(--muted); }
+
+  /* PRICING */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+    align-items: start;
+  }
+  .price-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2.8rem 2.4rem;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-card.featured {
+    background: var(--bg3);
+    border-color: var(--gold);
+  }
+  .price-card.featured::before {
+    content: 'PHỔ BIẾN NHẤT';
+    position: absolute; top: 1.5rem; right: 0;
+    background: var(--gold);
+    color: var(--bg);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 0.3rem 1rem;
+  }
+  .price-card:hover { transform: translateY(-5px); }
+  .price-type { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .price-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .price-val span { font-size: 1rem; font-weight: 400; color: var(--muted); }
+  .price-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+  .price-features { list-style: none; margin-bottom: 2.5rem; }
+  .price-features li {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    font-size: 0.88rem; color: var(--muted);
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .price-features li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .price-features li.no::before { content: '✗'; color: rgba(255,255,255,0.2); }
+  .price-features li.no { opacity: 0.5; }
+
+  /* CONTACT */
+  .contact { background: var(--bg2); }
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    margin-top: 4rem;
+    align-items: start;
+  }
+  .contact-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.2rem 1.4rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .contact-item:hover { border-color: rgba(201,169,110,0.35); }
+  .ci-icon {
+    width: 40px; height: 40px;
+    background: rgba(201,169,110,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .ci-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+  .ci-val { font-size: 0.95rem; font-weight: 500; }
+  .ci-val a { color: var(--text); text-decoration: none; }
+  .ci-val a:hover { color: var(--gold); }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.9rem 1.1rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group select option { background: var(--bg3); }
+  .form-submit {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--bg);
+    border: none;
+    padding: 1.1rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,169,110,0.3); }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 4rem 6vw 2.5rem;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .footer-brand .logo { font-size: 1.5rem; display: block; margin-bottom: 1rem; }
+  .footer-brand p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; max-width: 280px; }
+  .footer-col h5 {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+    font-weight: 600;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-col ul a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color 0.3s; }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; color: var(--muted);
+  }
+  .social-links { display: flex; gap: 1rem; }
+  .social-links a {
+    width: 38px; height: 38px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+  }
+  .social-links a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* DIVIDER */
+  .divider {
+    display: flex; align-items: center; gap: 1.5rem;
+    margin: 0 6vw;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--border); }
+  .divider-diamond {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.6;
+  }
+
+  /* FADE IN ANIMATION */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
+
+  /* FLOATING BADGE */
+  .floating-badge {
+    position: fixed; bottom: 2rem; right: 2rem;
+    z-index: 50;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--bg);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(201,169,110,0.35);
+    text-decoration: none;
+    transition: all 0.3s;
+    animation: floatPulse 3s ease-in-out infinite;
+  }
+  .floating-badge:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(201,169,110,0.5); }
+  @keyframes floatPulse {
+    0%,100%{box-shadow:0 8px 24px rgba(201,169,110,0.35)}
+    50%{box-shadow:0 8px 36px rgba(201,169,110,0.6)}
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-img-wrap { display: none; }
+    .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 2rem; }
+  }
+  @media (max-width: 700px) {
+    nav { padding: 1rem 4vw; }
+    .nav-links, .nav-cta { display: none; }
+    .menu-toggle { display: flex; }
+    section { padding: 5rem 5vw; }
+    .hero { padding: 7rem 5vw 5rem; }
+    .process-steps::before { display: none; }
+    .process-steps { grid-template-columns: 1fr; }
+    .step { border-right: none; border-bottom: 1px solid var(--border); padding: 0 0 2rem; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 1.5rem; }
+    .hero-stats { flex-wrap: wrap; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .nav-mobile { display: flex; flex-direction: column; gap: 0; }
+  }
+  .nav-mobile {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+    background: var(--bg);
+    z-index: 99;
+    flex-direction: column;
+    padding: 2rem 5vw;
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.3s;
+  }
+  .nav-mobile a:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">Web<span>Studio</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Về tôi</a></li>
+    <li><a href="#services">Dịch vụ</a></li>
+    <li><a href="#projects">Dự án</a></li>
+    <li><a href="#process">Quy trình</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Tư vấn miễn phí</a>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileNav">
+  <a href="#about" onclick="closeMenu()">Về tôi</a>
+  <a href="#services" onclick="closeMenu()">Dịch vụ</a>
+  <a href="#projects" onclick="closeMenu()">Dự án</a>
+  <a href="#process" onclick="closeMenu()">Quy trình</a>
+  <a href="#contact" onclick="closeMenu()">Liên hệ</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag fade-in">Chuyên gia Digital & Website</div>
+    <h1 class="fade-in fade-in-delay-1">
+      Xây dựng<br>
+      <em>Thương Hiệu Số</em><br>
+      Vượt Trội
+    </h1>
+    <p class="hero-desc fade-in fade-in-delay-2">
+      Tôi giúp doanh nghiệp bứt phá trên môi trường số — từ thiết kế website chuyên nghiệp, tối ưu SEO, đến quảng cáo Google &amp; Facebook hiệu quả. Tất cả trong một giải pháp toàn diện.
+    </p>
+    <div class="hero-btns fade-in fade-in-delay-3">
+      <a href="#services" class="btn-primary">Xem Dịch Vụ</a>
+      <a href="#contact" class="btn-outline">Liên Hệ Ngay</a>
+    </div>
+    <div class="hero-stats fade-in fade-in-delay-3">
+      <div>
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Dự Án Hoàn Thành</div>
+      </div>
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Năm Kinh Nghiệm</div>
+      </div>
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Khách Hàng Hài Lòng</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Cuộn xuống</div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap fade-in">
+      <div class="about-img-frame">
+        <div class="about-initials">WS</div>
+      </div>
+      <div class="about-deco"></div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag fade-in">Về tôi</div>
+      <h2 class="section-title fade-in">Người <em>đồng hành</em><br>phát triển digital</h2>
+      <div class="fade-in">
+        <p>Với hơn <strong>5 năm kinh nghiệm</strong> trong lĩnh vực phát triển web và marketing digital, tôi đã đồng hành cùng hàng chục doanh nghiệp — từ startup nhỏ đến công ty vừa — xây dựng nền tảng số vững chắc.</p>
+        <p>Tôi không chỉ làm website đẹp, mà còn đảm bảo website đó <strong>hoạt động hiệu quả</strong>, được tìm thấy trên Google, và chuyển đổi khách hàng tiềm năng thành doanh thu thực sự.</p>
+        <p>Mỗi dự án tôi nhận là một cam kết: <strong>đúng tiến độ, đúng chất lượng, đúng kết quả.</strong></p>
+      </div>
+      <div class="skills-grid fade-in">
+        <div class="skill-item">HTML / CSS / JavaScript</div>
+        <div class="skill-item">Google Ads & Analytics</div>
+        <div class="skill-item">WordPress / Shopify</div>
+        <div class="skill-item">Facebook Ads Manager</div>
+        <div class="skill-item">SEO On-page & Off-page</div>
+        <div class="skill-item">UI/UX Design cơ bản</div>
+        <div class="skill-item">Core Web Vitals</div>
+        <div class="skill-item">Email Marketing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag fade-in">Dịch Vụ</div>
+  <h2 class="section-title fade-in">Giải Pháp <em>Toàn Diện</em><br>Cho Doanh Nghiệp</h2>
+  <p class="section-sub fade-in">Từ việc xây dựng website từ đầu đến chạy quảng cáo, viết nội dung — tôi cung cấp đầy đủ công cụ để doanh nghiệp bạn bứt phá.</p>
+  <div class="services-grid fade-in">
+
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <span class="service-icon">🌐</span>
+      <h3>Thiết Kế & Phát Triển Website</h3>
+      <p>Xây dựng website chuyên nghiệp, tối ưu tốc độ, chuẩn SEO. Từ landing page đơn giản đến web thương mại điện tử phức tạp, tôi đảm bảo giao diện đẹp và trải nghiệm người dùng mượt mà.</p>
+      <div class="service-tags">
+        <span class="tag">WordPress</span>
+        <span class="tag">Shopify</span>
+        <span class="tag">Thuần Code</span>
+        <span class="tag">Responsive</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <span class="service-icon">🔧</span>
+      <h3>Bảo Trì & Nâng Cấp Website</h3>
+      <p>Giữ website của bạn luôn hoạt động ổn định, bảo mật và cập nhật. Xử lý lỗi kỹ thuật, cập nhật plugin, backup dữ liệu và nâng cấp tính năng theo nhu cầu phát sinh.</p>
+      <div class="service-tags">
+        <span class="tag">Security</span>
+        <span class="tag">Backup</span>
+        <span class="tag">Tối Ưu Tốc Độ</span>
+        <span class="tag">24/7 Support</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <span class="service-icon">✍️</span>
+      <h3>Viết Bài Chuẩn SEO</h3>
+      <p>Sản xuất nội dung chất lượng cao, nghiên cứu từ khóa chuyên sâu, tối ưu on-page SEO để bài viết lên top Google bền vững. Nội dung thu hút người đọc và công cụ tìm kiếm.</p>
+      <div class="service-tags">
+        <span class="tag">Keyword Research</span>
+        <span class="tag">On-page SEO</span>
+        <span class="tag">Content Strategy</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <span class="service-icon">🎯</span>
+      <h3>Quảng Cáo Google Ads</h3>
+      <p>Thiết lập và tối ưu chiến dịch Google Ads hiệu quả — Search, Display, Shopping. Tối đa hóa ROI, kiểm soát ngân sách chặt chẽ, báo cáo minh bạch hàng tuần.</p>
+      <div class="service-tags">
+        <span class="tag">Search Ads</span>
+        <span class="tag">Display</span>
+        <span class="tag">Remarketing</span>
+        <span class="tag">Shopping</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">05</span>
+      <span class="service-icon">📱</span>
+      <h3>Quảng Cáo Facebook & Instagram</h3>
+      <p>Xây dựng chiến lược quảng cáo Meta Ads từ A-Z: nghiên cứu đối tượng, sáng tạo nội dung, A/B testing và tối ưu liên tục để đạt chi phí chuyển đổi thấp nhất.</p>
+      <div class="service-tags">
+        <span class="tag">Lead Gen</span>
+        <span class="tag">Conversion</span>
+        <span class="tag">Lookalike</span>
+        <span class="tag">Video Ads</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">06</span>
+      <span class="service-icon">📊</span>
+      <h3>Tư Vấn & Chiến Lược Digital</h3>
+      <p>Phân tích tổng thể hiện trạng digital của doanh nghiệp, lập kế hoạch phát triển phù hợp ngân sách và mục tiêu. Giúp bạn đầu tư đúng chỗ, sinh lời đúng hướng.</p>
+      <div class="service-tags">
+        <span class="tag">Audit Website</span>
+        <span class="tag">Chiến Lược</span>
+        <span class="tag">Tư Vấn 1-1</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-tag fade-in">Dự Án Nổi Bật</div>
+  <h2 class="section-title fade-in">Những <em>Kết Quả</em><br>Tôi Đã Tạo Ra</h2>
+  <div class="projects-grid">
+
+    <div class="project-card fade-in">
+      <div class="project-thumb pt-1">
+        <div class="project-thumb-inner">
+          Thương Mại Điện Tử
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-cat">E-Commerce · SEO · Google Ads</div>
+        <h3>Shop Thời Trang Nữ Online</h3>
+        <p>Xây dựng website bán hàng trên Shopify, tối ưu SEO đưa 30+ từ khóa lên top 5 Google, triển khai Google Shopping Ads tăng 180% doanh thu trong 3 tháng.</p>
+        <a class="project-link" href="#contact">Xem Chi Tiết</a>
+      </div>
+    </div>
+
+    <div class="project-card fade-in fade-in-delay-1">
+      <div class="project-thumb pt-2">
+        <div class="project-thumb-inner">
+          Dịch Vụ Chuyên Nghiệp
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-cat">Website · Facebook Ads · Content</div>
+        <h3>Phòng Khám Nha Khoa</h3>
+        <p>Thiết kế website chuyên nghiệp, viết 40 bài blog chuẩn SEO, chạy Facebook Ads với CPA giảm 60% so với trước, tăng 3x lượng đặt lịch hẹn online.</p>
+        <a class="project-link" href="#contact">Xem Chi Tiết</a>
+      </div>
+    </div>
+
+    <div class="project-card fade-in fade-in-delay-2">
+      <div class="project-thumb pt-3">
+        <div class="project-thumb-inner">
+          Bất Động Sản
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-cat">Landing Page · Google Ads · SEO</div>
+        <h3>Dự Án Bất Động Sản Khu Vực</h3>
+        <p>Xây dựng landing page chuyển đổi cao, triển khai Google Search Ads nhắm mục tiêu địa phương, thu về 200+ lead khách hàng tiềm năng/tháng với chi phí tối ưu.</p>
+        <a class="project-link" href="#contact">Xem Chi Tiết</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-tag fade-in">Quy Trình</div>
+  <h2 class="section-title fade-in">Làm Việc <em>Minh Bạch</em><br>Kết Quả Rõ Ràng</h2>
+  <div class="process-steps">
+    <div class="step fade-in">
+      <div class="step-num">01</div>
+      <h4>Trao Đổi & Phân Tích</h4>
+      <p>Lắng nghe mục tiêu, phân tích đối thủ, nghiên cứu thị trường và đề xuất giải pháp phù hợp nhất với ngân sách của bạn.</p>
+    </div>
+    <div class="step fade-in fade-in-delay-1">
+      <div class="step-num">02</div>
+      <h4>Lên Kế Hoạch Chi Tiết</h4>
+      <p>Xây dựng kế hoạch triển khai cụ thể với timeline rõ ràng, milestone kiểm tra từng giai đoạn và cam kết kết quả đầu ra.</p>
+    </div>
+    <div class="step fade-in fade-in-delay-2">
+      <div class="step-num">03</div>
+      <h4>Triển Khai & Tối Ưu</h4>
+      <p>Thực thi theo kế hoạch, báo cáo tiến độ thường xuyên, điều chỉnh linh hoạt để đạt kết quả tốt nhất theo thực tế.</p>
+    </div>
+    <div class="step fade-in fade-in-delay-3">
+      <div class="step-num">04</div>
+      <h4>Bàn Giao & Hỗ Trợ</h4>
+      <p>Bàn giao đầy đủ tài liệu, hướng dẫn sử dụng và hỗ trợ kỹ thuật sau triển khai. Đảm bảo bạn chủ động với tài sản số của mình.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-tag fade-in">Phản Hồi</div>
+  <h2 class="section-title fade-in">Khách Hàng <em>Nói Gì</em><br>Về Tôi?</h2>
+  <div class="testi-grid">
+    <div class="testi-card fade-in">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Website mới của chúng tôi vừa đẹp vừa load cực nhanh. Sau 2 tháng, lượng traffic từ Google tăng gần gấp đôi. Rất hài lòng với chất lượng công việc và sự tận tâm của bạn.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AT</div>
+        <div>
+          <div class="testi-name">Anh Tuấn</div>
+          <div class="testi-role">CEO — Công Ty TNHH Nội Thất Tân Phú</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-in fade-in-delay-1">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Chiến dịch Facebook Ads do bạn setup giúp phòng khám tôi tăng gấp 3 lần số lịch đặt hẹn. Chi phí cho mỗi khách hàng mới thấp hơn nhiều so với kỳ vọng ban đầu.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">ML</div>
+        <div>
+          <div class="testi-name">BS. Mai Linh</div>
+          <div class="testi-role">Giám đốc — Nha Khoa Sài Gòn Smile</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-in fade-in-delay-2">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Các bài viết SEO rất chất lượng, tự nhiên và được Google đánh giá cao. Sau 4 tháng, shop online của tôi đã có 15+ từ khóa nằm ở trang 1 kết quả tìm kiếm.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">HN</div>
+        <div>
+          <div class="testi-name">Chị Hương Ngân</div>
+          <div class="testi-role">Chủ shop — Thời Trang HN Boutique</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-tag fade-in">Gói Dịch Vụ</div>
+  <h2 class="section-title fade-in">Giá Cả <em>Minh Bạch</em><br>Không Phát Sinh</h2>
+  <p class="section-sub fade-in">Chọn gói phù hợp với nhu cầu. Tất cả gói đều bao gồm hỗ trợ kỹ thuật và báo cáo định kỳ.</p>
+  <div class="pricing-grid">
+
+    <div class="price-card fade-in">
+      <div class="price-type">Khởi Đầu</div>
+      <div class="price-val">Liên hệ <span>/ dự án</span></div>
+      <div class="price-desc">Phù hợp cho doanh nghiệp mới, cần nền tảng website cơ bản.</div>
+      <ul class="price-features">
+        <li>Thiết kế website 5–7 trang</li>
+        <li>Responsive mobile</li>
+        <li>Tối ưu tốc độ cơ bản</li>
+        <li>Cài đặt Google Analytics</li>
+        <li>Bàn giao mã nguồn</li>
+        <li class="no">Viết content SEO</li>
+        <li class="no">Setup quảng cáo</li>
+      </ul>
+      <a href="#contact" class="btn-outline" style="display:block;text-align:center;padding:0.9rem">Liên Hệ Báo Giá</a>
+    </div>
+
+    <div class="price-card featured fade-in fade-in-delay-1">
+      <div class="price-type">Chuyên Nghiệp</div>
+      <div class="price-val">Liên hệ <span>/ tháng</span></div>
+      <div class="price-desc">Gói toàn diện nhất cho doanh nghiệp muốn tăng trưởng bền vững.</div>
+      <ul class="price-features">
+        <li>Website đầy đủ + bảo trì</li>
+        <li>4 bài viết SEO/tháng</li>
+        <li>Quảng cáo Google hoặc Facebook</li>
+        <li>Báo cáo hiệu quả hàng tuần</li>
+        <li>Hỗ trợ kỹ thuật ưu tiên</li>
+        <li>Tư vấn chiến lược hàng tháng</li>
+        <li>Review & tối ưu liên tục</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="display:block;text-align:center;padding:0.9rem">Liên Hệ Báo Giá</a>
+    </div>
+
+    <div class="price-card fade-in fade-in-delay-2">
+      <div class="price-type">Bảo Trì</div>
+      <div class="price-val">Liên hệ <span>/ tháng</span></div>
+      <div class="price-desc">Cho website đã có, cần bảo trì và cập nhật thường xuyên.</div>
+      <ul class="price-features">
+        <li>Backup dữ liệu định kỳ</li>
+        <li>Cập nhật plugin & bảo mật</li>
+        <li>Monitor uptime 24/7</li>
+        <li>Sửa lỗi phát sinh</li>
+        <li>Tối ưu tốc độ định kỳ</li>
+        <li class="no">Viết content</li>
+        <li class="no">Quảng cáo</li>
+      </ul>
+      <a href="#contact" class="btn-outline" style="display:block;text-align:center;padding:0.9rem">Liên Hệ Báo Giá</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-tag fade-in">Liên Hệ</div>
+  <h2 class="section-title fade-in">Hãy Bắt Đầu<br><em>Dự Án Của Bạn</em></h2>
+  <div class="contact-wrapper">
+    <div class="contact-info fade-in">
+      <h3>Sẵn sàng lắng nghe<br>ý tưởng của bạn</h3>
+      <p>Dù bạn cần xây website mới, bảo trì website hiện tại, hay tìm kiếm đội ngũ digital marketing — tôi luôn sẵn sàng tư vấn miễn phí và đề xuất giải pháp tốt nhất.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Điện Thoại / Zalo</div>
+            <div class="ci-val"><a href="tel:+84xxxxxxxxx">0xx xxx xxxx</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val"><a href="mailto:hello@webstudio.vn">hello@webstudio.vn</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Khu Vực Phục Vụ</div>
+            <div class="ci-val">Toàn Quốc (Online)</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">⏰</div>
+          <div>
+            <div class="ci-label">Giờ Làm Việc</div>
+            <div class="ci-val">T2–T7: 8:00 – 18:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form fade-in fade-in-delay-1" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Họ & Tên *</label>
+          <input type="text" placeholder="Nguyễn Văn A" required>
+        </div>
+        <div class="form-group">
+          <label>Số Điện Thoại *</label>
+          <input type="tel" placeholder="0xx xxx xxxx" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="email@example.com">
+      </div>
+      <div class="form-group">
+        <label>Dịch Vụ Quan Tâm *</label>
+        <select required>
+          <option value="" disabled selected>Chọn dịch vụ...</option>
+          <option>Thiết kế & Phát triển Website</option>
+          <option>Bảo trì & Nâng cấp Website</option>
+          <option>Viết bài chuẩn SEO</option>
+          <option>Quảng cáo Google Ads</option>
+          <option>Quảng cáo Facebook & Instagram Ads</option>
+          <option>Gói Dịch Vụ Toàn Diện</option>
+          <option>Tư vấn Chiến Lược Digital</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mô Tả Nhu Cầu</label>
+        <textarea rows="4" placeholder="Mô tả ngắn về dự án, mục tiêu và ngân sách dự kiến của bạn..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Gửi Yêu Cầu Tư Vấn →</button>
+      <div id="form-msg" style="display:none;padding:1rem;background:rgba(201,169,110,0.1);border:1px solid var(--gold);color:var(--gold);font-size:0.88rem;text-align:center;margin-top:0.5rem;">
+        ✓ Cảm ơn bạn! Tôi sẽ liên hệ lại trong vòng 24 giờ.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="logo" href="#">Web<span>Studio</span></a>
+      <p>Đối tác đáng tin cậy cho hành trình phát triển digital của doanh nghiệp bạn. Chất lượng, minh bạch và kết quả thực sự.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Dịch Vụ</h5>
+      <ul>
+        <li><a href="#services">Thiết Kế Website</a></li>
+        <li><a href="#services">Bảo Trì Website</a></li>
+        <li><a href="#services">Viết Bài SEO</a></li>
+        <li><a href="#services">Google Ads</a></li>
+        <li><a href="#services">Facebook Ads</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Thông Tin</h5>
+      <ul>
+        <li><a href="#about">Về Tôi</a></li>
+        <li><a href="#projects">Dự Án</a></li>
+        <li><a href="#process">Quy Trình</a></li>
+        <li><a href="#pricing">Bảng Giá</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Kết Nối</h5>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Zalo</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#contact">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 WebStudio. Thiết kế với ♥ tại Việt Nam.</span>
+    <div class="social-links">
+      <a href="#" title="Facebook">f</a>
+      <a href="#" title="Zalo">Z</a>
+      <a href="#" title="LinkedIn">in</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CONTACT -->
+<a class="floating-badge" href="#contact" title="Liên hệ ngay">💬</a>
+
+<script>
+  // Fade in on scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  faders.forEach(el => observer.observe(el));
+
+  // Trigger hero elements immediately
+  document.querySelectorAll('.hero .fade-in').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 100 + i * 150);
+  });
+
+  // Mobile nav
+  function toggleMenu() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileNav').classList.remove('open');
+  }
+
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+    });
+  });
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.style.display = 'block';
+    e.target.querySelector('.form-submit').disabled = true;
+    e.target.querySelector('.form-submit').style.opacity = '0.6';
+  }
+
+  // Smooth number counter animation for stats
+  function animateCounter(el, target, suffix) {
+    let start = 0;
+    const duration = 1800;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const val = Math.floor(progress * target);
+      el.textContent = val + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const nums = e.target.querySelectorAll('.stat-num');
+        nums[0] && animateCounter(nums[0], 50, '+');
+        nums[1] && animateCounter(nums[1], 5, '+');
+        nums[2] && animateCounter(nums[2], 98, '%');
+        statsObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  const statsEl = document.querySelector('.hero-stats');
+  if (statsEl) statsObserver.observe(statsEl);
+</script>
+</body>
+</html>
